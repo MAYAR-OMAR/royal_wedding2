@@ -4,25 +4,31 @@
     padding: 0;
 }
 
+/* t2kd en el html w body msh m3molhm overflow hidden */
 body, html {
     width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: #000;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: bisque;
 }
 
+/* el container al ra2esy ll sfha lw kan m3mol screen w overflow hidden, shilo aw 3dlo kda */
 .screen {
-    position: fixed;
-    top: 0;
+    position: relative; /* aw absolute bshrt eny m-overflow-sh */
+    width: 100vw;
+    min-height: 100vh;
+     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    height: 100dvh;
+   
     display: flex;
     justify-content: center;
     align-items: center;
     transition: opacity 0.5s ease;
 }
+
 
 .hidden {
     opacity: 0;
@@ -87,7 +93,7 @@ body, html {
 
 /* al safha al tanya (video) w5d al shasha brdo */
 #first-page-screen {
-    background: #000;
+    background: beige;
     z-index: 10;
 }
 
@@ -95,4 +101,39 @@ body, html {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+/* شاشة الصورة الجديدة وتنسيقها لتكون ملء العرض وبدون قص */
+#image-screen {
+    z-index: 20;
+    overflow-y: auto; /* بيسمح بالسكرول لو الصورة طويلة */
+    align-items: flex-start;
+    background: #000;
+}
+
+.image-container {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#invitation-img {
+    width: 100%; /* تاخد عرض الشاشة بالكامل من اليمين للشمال */
+    height: auto; /* تحافظ على أبعاد الصورة وطولها الطبيعي بدون قص */
+    display: block;
+}
+/* tnsiyl tany safha w el sora bta3tha */
+.second-page-section {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #000; /* aw ay lon background tfdlih */
+}
+
+.full-width-image {
+    width: 100%; /* btakhod el 3rd kollo mn ymen l shmal */
+    height: auto; /* bt7afz 3la toulha el tbi3y mn gher ma yt2s menha 7aga */
+    display: block;
 }
