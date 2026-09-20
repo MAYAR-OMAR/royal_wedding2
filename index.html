@@ -3,55 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Da3wa</title>
+    <title>Royal Wedding</title>
     <link rel="stylesheet" href="style.css">
-    <meta property="og:title" content="Royal Wedding" />
-<meta property="og:description" content="We invite you to celebrate our special day" />
-<meta property="og:url" content="https://royal-wedding2.vercel.app/" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://royal-wedding2.vercel.app/poster.jfif" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Royal Wedding Invitation" />
-<meta property="og:site_name" content="youra_coding" />
-
-<title>Royal Wedding</title>
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Royal Wedding" />
-<meta name="twitter:description" content="We invite you to celebrate our special day" />
-<meta name="twitter:image" content="https://royal-wedding2.vercel.app/poster.jfif" />
 </head>
 <body>
 
-    <!-- al shasha al awla: el envelope w 3leha al poster malyn al shasha kolha -->
-    <div id="envelope-screen" class="screen">
+    <!-- 1. شاشة الظرف (ثابتة في الأول لحد ما تدوسي عليها) -->
+    <div id="envelope-screen" class="envelope-screen">
         <div class="envelope-container" id="envelope-box">
-            <!-- video fth el envelope -->
             <video id="envelope-video" playsinline webkit-playsinline>
                 <source src="opening.mp4" type="video/mp4">
             </video>
-            
-            <!-- sora al poster btshta8l k wgah w tmla al shasha -->
             <img src="poster.jfif" alt="Poster" id="envelope-poster">
-            
-          
         </div>
     </div>
 
-    <!-- al shasha al tanya: al safha al awla (video) -->
-    <div id="first-page-screen" class="screen hidden">
-        <video id="main-video" playsinline webkit-playsinline>
-            <source src="firstpage.mp4" type="video/mp4">
-        </video>
-    </div>
+    <!-- 2. الصفحة الطويلة اللي هتعملي فيها scroll براحتك (فيها الفيديو وتحته الصورة) -->
+    <div id="main-scroll-page" class="scroll-page hidden">
+        
+        <!-- قسم الفيديو الأول -->
+        <div class="video-section">
+            <video id="main-video" autoplay loop muted playsinline webkit-playsinline>
+                <source src="firstpage.mp4" type="video/mp4">
+            </video>
+        </div>
 
+        <!-- قسم الصورة تحته مباشرة (تظهر وأنتِ بتعملي scroll) -->
+        <div class="image-section">
+            <img src="secondp.jfif" alt="Second Page Invitation" class="full-width-image">
+        </div>
 
-
-
-    <!-- tany safha: el sora elly htnzl tshoofha b al scroll -->
-    <div class="second-page-section">
-        <img src="./secondp.jfif" alt="Second Page Invitation" class="full-width-image">
     </div>
 
     <script src="script.js"></script>

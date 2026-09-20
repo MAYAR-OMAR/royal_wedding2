@@ -4,41 +4,32 @@
     padding: 0;
 }
 
-/* t2kd en el html w body msh m3molhm overflow hidden */
 body, html {
     width: 100%;
-    height: auto;
+    height: 100%;
+    background-color: #000;
     overflow-x: hidden;
-    overflow-y: auto;
-    background-color: bisque;
 }
 
-/* el container al ra2esy ll sfha lw kan m3mol screen w overflow hidden, shilo aw 3dlo kda */
-.screen {
-    position: relative; /* aw absolute bshrt eny m-overflow-sh */
-    width: 100vw;
-    min-height: 100vh;
-     top: 0;
+/* في البداية قفلنا السكرول لحد ما الظرف يتفتح */
+body.lock-scroll {
+    overflow: hidden;
+}
+
+/* شاشة الظرف المغلقة أول ما تفتحي الموقع */
+.envelope-screen {
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-   
+    height: 100dvh;
+    z-index: 100;
+    background: #000;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: opacity 0.5s ease;
-}
-
-
-.hidden {
-    opacity: 0;
-    pointer-events: none;
-    display: none !important;
-}
-
-/* al envelope w al poster w5din al shasha kolha bal kaml */
-#envelope-screen {
-    background: #000;
 }
 
 .envelope-container {
@@ -47,93 +38,59 @@ body, html {
     height: 100vh;
     height: 100dvh;
     cursor: pointer;
-    background: #000;
 }
 
-#envelope-video {
+#envelope-video, #envelope-poster {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* by5ly al video ymla al shasha bl kaml mn gher tshowoh */
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
 }
 
 #envelope-poster {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* by5ly al poster ymla al shasha kolha 3la ad el mobaill */
-    position: absolute;
-    top: 0;
-    left: 0;
     z-index: 2;
     transition: opacity 0.4s ease;
 }
 
-.click-hint {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    padding: 10px 22px;
-    border-radius: 25px;
-    font-size: 15px;
-    font-family: Arial, sans-serif;
-    white-space: nowrap;
-    z-index: 3;
-    animation: bounce 1.5s infinite;
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none !important;
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translate(-50%, 0); }
-    50% { transform: translate(-50%, -8px); }
+/* الصفحة الطويلة اللي بتقبل السكرول */
+.scroll-page {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #000;
 }
 
-/* al safha al tanya (video) w5d al shasha brdo */
-#first-page-screen {
-    background: beige;
-    z-index: 10;
+/* قسم الفيديو (واخد الشاشة كلها) */
+.video-section {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
 }
 
-#main-video {
+.video-section video {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-/* شاشة الصورة الجديدة وتنسيقها لتكون ملء العرض وبدون قص */
-#image-screen {
-    z-index: 20;
-    overflow-y: auto; /* بيسمح بالسكرول لو الصورة طويلة */
-    align-items: flex-start;
-    background: #000;
-}
 
-.image-container {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-#invitation-img {
-    width: 100%; /* تاخد عرض الشاشة بالكامل من اليمين للشمال */
-    height: auto; /* تحافظ على أبعاد الصورة وطولها الطبيعي بدون قص */
-    display: block;
-}
-/* tnsiyl tany safha w el sora bta3tha */
-.second-page-section {
+/* قسم الصورة (تحت الفيديو مباشرة، تنزلي لها بالـ Scroll) */
+.image-section {
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-color: #000; /* aw ay lon background tfdlih */
+    background-color: #000;
 }
 
 .full-width-image {
-    width: 100%; /* btakhod el 3rd kollo mn ymen l shmal */
-    height: auto; /* bt7afz 3la toulha el tbi3y mn gher ma yt2s menha 7aga */
+    width: 100%;
+    height: auto;
     display: block;
 }

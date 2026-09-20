@@ -4,10 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const envelopeVideo = document.getElementById("envelope-video");
     
     const envelopeScreen = document.getElementById("envelope-screen");
-    const firstPageScreen = document.getElementById("first-page-screen");
+    const mainScrollPage = document.getElementById("main-scroll-page");
     const mainVideo = document.getElementById("main-video");
 
-    // lma ndos 3la al poster, y5tfy w al video ysht8l
+    // أول ما تفتحي الصفحة، نقفل السكرول لحد ما تدوسي على الظرف
+    document.body.classList.add("lock-scroll");
+
+    // لما ندوس على البوستر، يختفي وفيديو الظرف يشتغل
     envelopeBox.addEventListener("click", () => {
         envelopePoster.style.opacity = "0";
         setTimeout(() => {
@@ -19,10 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // lma video al envelope y5ls, yfta7 al safha al awla (al video al tany)
+    // لما فيديو الظرف يخلص، نخفي شاشة الظرف ونفتح السكرول ونظهر صفحة الفيديو والصورة
     envelopeVideo.addEventListener("ended", () => {
         envelopeScreen.classList.add("hidden");
-        firstPageScreen.classList.remove("hidden");
+        mainScrollPage.classList.remove("hidden");
+        document.body.classList.remove("lock-scroll"); // فتح السكرول هنا تماماً
         
         mainVideo.play().catch(error => {
             console.log("Error playing main video:", error);
