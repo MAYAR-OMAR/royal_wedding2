@@ -7,7 +7,7 @@
 body, html {
     width: 100%;
     height: 100%;
-    background-color: #000;
+    background-color: bisque;
     overflow-x: hidden;
 }
 
@@ -64,7 +64,7 @@ body.lock-scroll {
 .scroll-page {
     width: 100vw;
     min-height: 100vh;
-    background-color: #000;
+    background-color: beige;
 }
 
 /* قسم الفيديو (واخد الشاشة كلها) */
@@ -86,11 +86,322 @@ body.lock-scroll {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-color: #000;
+    background-color: beige;
 }
 
 .full-width-image {
     width: 100%;
     height: auto;
     display: block;
+}
+
+
+
+
+/* Mek sure se di image-section na di anchor fɔ di absolute positioning */
+.image-section {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Yu fit adjust dis to fit yu layout */
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Style fɔ di text we de ovri di date sign */
+.image-section .date-overlay {
+    position: absolute;
+    top: 67%;  /* Yu fit adjust dis if e nɔ de exact na di fra8 */
+    left: 75%; /* Yu fit adjust dis tu */
+    transform: translate(-50%, -50%);
+    
+    /* Text kɔlɔ ɛn style - Wi yuz cream/gold kɔlɔ make e bayen wɛl wɛl fɔ di dark wood */
+    color: #f3e5ab; 
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 5.5vw; /* Responsive size fɔ big screen */
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Strong shadow make e bayen clear */
+    letter-spacing: 2px;
+    z-index: 10;
+}
+
+/* Media query fɔ smɔl mobile screen make di text nɔ bi too big */
+@media (max-width: 768px) {
+    .image-section .date-overlay {
+        font-size: 20px; /* Fixed clear size fɔ mobile fon */
+    }
+}
+
+
+
+
+
+
+
+
+
+.countdown-section {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.full-width-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* لو حابة تحركي العداد كله مع بعضه يمين/شمال أو فوق/تحت */
+.countdown-overlay {
+    position: absolute;
+    top: 55%;
+    left: 27.5%;
+    transform: translate(-50%, -50%);
+    width: 32%;
+    height: 35%;
+}
+
+/* 
+  كل رقم وكلمة تحتها بقوا في ديف لوحدهم 
+  تقدري تغيري top و left لكل واحد لوحده عشان يجي في نص المربع بتاعه بالضبط!
+*/
+
+/* 1. الأيام (DAYS) */
+.time-days {
+    position: absolute;
+    top: 15%;   /* تحكمي في الارتفاع من هنا */
+    left: 18%;  /* تحكمي في اليمين والشمال من هنا */
+    text-align: center;
+}
+
+/* 2. الساعات (HOURS) */
+.time-hours {
+    position: absolute;
+    top: 15%;
+    left: 72%;
+    text-align: center;
+}
+
+/* 3. الدقائق (MINUTES) */
+.time-minutes {
+    position: absolute;
+    top: 60%;
+    left: 18%;
+    text-align: center;
+}
+
+/* 4. الثواني (SECONDS) */
+.time-seconds {
+    position: absolute;
+    top: 60%;
+    left: 72%;
+    text-align: center;
+}
+
+/* شكل الأرقام (لون ذهبي وواضح وجميل) */
+.time-item span {
+    color: #dfbe7d; /* لون ذهبي رايق */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 5.5vw;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* عشان تظهر بوضوح فوق الخلفية */
+    display: block;
+}
+
+
+
+/* --- زرار جوجل ماب (مضبوط وشيك جوه اللوحة اليمين بس ومن غير overlay كبير) --- */
+.location-overlay {
+    position: absolute;
+    top: 58%;      /* مكان الزرار جوه اللوحة اليمين */
+    left: 72.5%;
+    transform: translate(-50%, -50%);
+    width: 24%;    /* عرض صغير ومناسب جداً */
+    height: 15%;   /* ارتفاع صغير ومش ماذي للعين */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #dfbe7d;
+    background: rgba(40, 30, 20, 0.4); /* خلفية خفيفة كلاسيك */
+    border: 1px solid rgba(223, 190, 125, 0.5); /* إطار ذهبي رقيق */
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.location-overlay:hover {
+    background: rgba(40, 30, 20, 0.7);
+    border-color: #dfbe7d;
+}
+
+.location-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1vw;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.loc-icon {
+    color: #dfbe7d;
+}
+
+/* للموبايل */
+@media (max-width: 768px) {
+    .time-item span {
+        font-size: 18px;
+    }
+    .time-item label {
+        font-size: 8px;
+    }
+    .location-content {
+        font-size: 10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+.countdown-section {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.full-width-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* حاوية العداد الكلية */
+.countdown-overlay {
+    position: absolute;
+    top: 55%;
+    left: 27.5%;
+    transform: translate(-50%, -50%);
+    width: 34%;
+    height: 38%;
+}
+
+/* أماكن المربعات الأربعة (تقدري تغيري top و left براحتك لو حابة ترحليهم سنة) */
+.time-days {
+    position: absolute;
+    top: 20%;
+    left: 18%;
+    text-align: center;
+}
+
+.time-hours {
+    position: absolute;
+    top: 20%;
+    left: 72%;
+    text-align: center;
+}
+
+.time-minutes {
+    position: absolute;
+    top: 58%;
+    left: 18%;
+    text-align: center;
+}
+
+.time-seconds {
+    position: absolute;
+    top: 58%;
+    left: 72%;
+    text-align: center;
+}
+
+/* شكل الأرقام: كبرنا حجم الخط واستخدمنا لون ذهبي قوي مع ظل عالي عشان يظهر واضح ومقروء */
+.time-item span {
+    color: rgb(63, 39, 8); /* لون ذهبي غني وواضح جداً */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 38px; /* استخدمنا بيكسل عشان يثبت حجمه ويكبر بوضوح تام مهما كان الشاشة */
+    font-weight: 900;
+  
+    display: block;
+    line-height: 1.1;
+}
+
+/* شكل الكلمات (DAYS, HOURS...) */
+.time-item label {
+    color: rgb(163, 141, 14); /* بني غامق كلاسيك يناسب اللوحة وشكل الديزل القديم، أو ممكن تخليه ذهبي لو تحبي */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-top: 4px;
+}
+
+/* --- زرار جوجل ماب (مظبوط جوه الإطار اليمين بالظبط) --- */
+.location-overlay {
+    position: absolute;
+    top: 53%;      /* رفعناه شوية عشان يبقى في نص الـ Box اليمين بالضبط زي ما ظهر في صورتك الأخيرة */
+    left: 72.5%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    height: 16%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #4a3b2c;
+    background: rgba(245, 235, 220, 0.6); /* خلفية ورقية خفيفة رايقة */
+    border: 1px solid rgba(180, 150, 100, 0.6);
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.location-overlay:hover {
+    background: rgba(245, 235, 220, 0.9);
+    border-color: #e5c158;
+}
+
+.location-content {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.loc-icon {
+    color: #8c6d33;
+}
+
+/* ميديا كويري للموبايل الصغير عشان يفضل مظبوط */
+@media (max-width: 768px) {
+    .time-item span {
+        font-size: 24px;
+    }
+    .time-item label {
+        font-size: 9px;
+    }
+    .location-content {
+        font-size: 10px;
+    }
+}
+
+
+.third-page-section {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0px auto 0 auto; /* مسافة بينها وبين الصفحة اللي فوقها */
+    text-align: center;
 }

@@ -12,28 +12,69 @@
     <div id="envelope-screen" class="envelope-screen">
         <div class="envelope-container" id="envelope-box">
             <video id="envelope-video" playsinline webkit-playsinline>
-                <source src="opening.mp4" type="video/mp4">
+                <source src="opening2.mp4" type="video/mp4">
             </video>
-            <img src="poster.jfif" alt="Poster" id="envelope-poster">
+            <img src="posterred.jfif" alt="Poster" id="envelope-poster">
         </div>
     </div>
 
     <!-- 2. الصفحة الطويلة اللي هتعملي فيها scroll براحتك (فيها الفيديو وتحته الصورة) -->
-    <div id="main-scroll-page" class="scroll-page hidden">
-        
-        <!-- قسم الفيديو الأول -->
-        <div class="video-section">
-            <video id="main-video" autoplay loop muted playsinline webkit-playsinline>
-                <source src="firstpage.mp4" type="video/mp4">
-            </video>
-        </div>
+
+
+
+
+     <div id="main-scroll-page" class="scroll-page hidden">
 
         <!-- قسم الصورة تحته مباشرة (تظهر وأنتِ بتعملي scroll) -->
         <div class="image-section">
-            <img src="secondp.jfif" alt="Second Page Invitation" class="full-width-image">
+
+            <img src="page1.jfif" alt="Second Page Invitation" class="full-width-image">
+              <div class="date-overlay">30/11/2026</div>
         </div>
 
     </div>
+
+<div class="image-section countdown-section">
+    <img src="page2.jfif" alt="Countdown and Location" class="full-width-image">
+    
+    <!-- العداد (كل خانة ليها مكان مستقل عشان تحركيها براحتك) -->
+    <div class="countdown-overlay">
+        <div class="time-item time-days">
+            <span id="days">00</span>
+           
+        </div>
+        <div class="time-item time-hours">
+            <span id="hours">00</span>
+           
+        </div>
+        <div class="time-item time-minutes">
+            <span id="minutes">00</span>
+          
+        </div>
+        <div class="time-item time-seconds">
+            <span id="seconds">00</span>
+           
+        </div>
+    </div>
+
+    <!-- زرار جوجل ماب الجديد (صغير ومنسق جوه اللوحة اليمين) -->
+    <a href="https://maps.app.goo.gl/DkR37phu4sgSC7xq5?g_st=iw" target="_blank" class="location-overlay">
+        <div class="location-content">
+            <svg class="loc-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>GOOGLE MAPS</span>
+        </div>
+    </a>
+</div>
+
+
+
+
+
+<!-- الصفحة الثالثة (صورة جديدة) -->
+<div class="image-section third-page-section">
+    <img src="page3.jfif" alt="Page Three Design" class="full-width-image">
+</div>
+
 
     <script src="script.js"></script>
 </body>
