@@ -7,27 +7,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainScrollPage = document.getElementById("main-scroll-page");
     const mainVideo = document.getElementById("main-video");
 
-    // عنصر الأغنية الأساسية
+    // 3nsr el oghneya el asasyya
     const bgMusic = document.getElementById("bg-music");
 
-    // أول ما تفتحي الصفحة، نقفل السكرول لحد ما تدوسي على الظرف
+    // awl ma tft7y el saf7a, nqfl el scroll
     document.body.classList.add("lock-scroll");
 
-    // لما ندوس على البوستر، يختفي وفيديو الظرف يشتغل (صامت) والأغنية تشتغل وتبفضل شغالة علطول
+    // lma ndos 3la el poster
     envelopeBox.addEventListener("click", () => {
         envelopePoster.style.opacity = "0";
         setTimeout(() => {
             envelopePoster.style.display = "none";
         }, 400);
 
-        // تشغيل فيديو الظرف (صامت عشان ما يقفلش الأغنية على الموبايل)
+        // t48eel fideo el zrf (samit 3ashan el mobayl mayshfsh t2to3 el song)
         if (envelopeVideo) {
             envelopeVideo.play().catch(error => {
                 console.log("Error playing envelope video:", error);
             });
         }
 
-        // تشغيل الأغنية الأساسية وتثبيتها
+        // t48eel el oghneya w tsht8l bdon ma ttfy
         if (bgMusic) {
             bgMusic.play().catch(error => {
                 console.log("Error playing audio:", error);
@@ -35,24 +35,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // لما فيديو الظرف يخلص، نخفي شاشة الظرف ونفتح السكرول وننزل أوتوماتيك لتحت
+    // lma fideo el zrf y5ls
     if (envelopeVideo) {
         envelopeVideo.addEventListener("ended", () => {
             envelopeScreen.classList.add("hidden");
             mainScrollPage.classList.remove("hidden");
             
-            // فتح السكرول تماماً وإلغاء أي قفل
+            // fth el scroll w eltga2y el 2fl
             document.body.classList.remove("lock-scroll");
             document.body.style.overflow = "auto"; 
             
-            // تشغيل الفيديو الرئيسي
             if (mainVideo) {
                 mainVideo.play().catch(error => {
                     console.log("Error playing main video:", error);
                 });
             }
 
-            // الأوتو سكرول (Autoscroll) للنزول تلقائياً للعداد واللوكيشن
+            // Auto scroll lel qesm el tany
             setTimeout(() => {
                 mainScrollPage.scrollIntoView({ 
                     behavior: 'smooth' 
@@ -62,8 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// تاريخ الفرح (30 نوفمبر 2026 الساعة 7 مساءً)
-const weddingDate = new Date("2026-11-30T19:00:00").getTime();
+// taree5 el farah: 31/10/2026 el sa3a 7 bellel (19:00)
+const weddingDate = new Date("2026-10-31T19:00:00").getTime();
 
 const timer = setInterval(function() {
     const now = new Date().getTime();
@@ -83,9 +82,9 @@ const timer = setInterval(function() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // تحديث خانات العداد تلقائياً
+    // t7deeth el 5anat bshkl sa7ih w bdon ay ghalat
     document.getElementById("days").innerText = String(days).padStart(2, '0');
     document.getElementById("hours").innerText = String(hours).padStart(2, '0');
     document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-    document.getElementById("seconds").innerTextString = String(seconds).padStart(2, '0');
+    document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
 }, 1000);
