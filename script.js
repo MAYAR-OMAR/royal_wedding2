@@ -7,38 +7,61 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainScrollPage = document.getElementById("main-scroll-page");
     const mainVideo = document.getElementById("main-video");
 
+    // عنصر الأغنية
+    const bgMusic = document.getElementById("bg-music");
+
     // أول ما تفتحي الصفحة، نقفل السكرول لحد ما تدوسي على الظرف
     document.body.classList.add("lock-scroll");
 
-    // لما ندوس على البوستر، يختفي وفيديو الظرف يشتغل
+    // لما ندوس على البوستر، يختفي وفيديو الظرف يشتغل والأغنية تشتغل
     envelopeBox.addEventListener("click", () => {
         envelopePoster.style.opacity = "0";
         setTimeout(() => {
             envelopePoster.style.display = "none";
         }, 400);
 
-        envelopeVideo.play().catch(error => {
-            console.log("Error playing envelope video:", error);
-        });
+        // تشغيل فيديو الظرف
+        if (envelopeVideo) {
+            envelopeVideo.play().catch(error => {
+                console.log("Error playing envelope video:", error);
+            });
+        }
+
+        // تشغيل الأغنية والتأكد من عملها
+        if (bgMusic) {
+            bgMusic.play().catch(error => {
+                console.log("Error playing audio:", error);
+            });
+        }
     });
 
-    // لما فيديو الظرف يخلص، نخفي شاشة الظرف ونفتح السكرول ونظهر صفحة الفيديو والصورة
-    envelopeVideo.addEventListener("ended", () => {
-        envelopeScreen.classList.add("hidden");
-        mainScrollPage.classList.remove("hidden");
-        document.body.classList.remove("lock-scroll"); // فتح السكرول هنا تماماً
-        
-        mainVideo.play().catch(error => {
-            console.log("Error playing main video:", error);
+    // لما فيديو الظرف يخلص، نخفي شاشة الظرف ونفتح السكرول وننزل أوتوماتيك لتحت
+    if (envelopeVideo) {
+        envelopeVideo.addEventListener("ended", () => {
+            envelopeScreen.classList.add("hidden");
+            mainScrollPage.classList.remove("hidden");
+            document.body.classList.remove("lock-scroll"); // فتح السكرول هنا تماماً
+            
+            // تشغيل الفيديو الرئيسي
+            if (mainVideo) {
+                mainVideo.play().catch(error => {
+                    console.log("Error playing main video:", error);
+                });
+            }
+
+            // الأوتو سكرول (Autoscroll)
+            setTimeout(() => {
+                mainScrollPage.scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            }, 100);
         });
-    });
+    }
 });
-// تاريخ الفرح (تأكدي من التاريخ، وفي الصورة مكتوب 30/10/2026 أو زي ما تحبي)
-// Tarikh el farah 30/11/2026
-// Stakhdem el raqam 10 lel shahr November (3ashan el shohor btbda' mn 0: 0=Jan, 10=Nov)
-// تاريخ الفرح 30/11/2026 مظبوط وصحيح 100%
-// تاريخ الفرح (30 نوفمبر 2026)
-const weddingDate = new Date("2026-11-30T00:00:00").getTime();
+
+// تاريخ الفرح (30 نوفمبر 2026 الساعة 7 مساءً)
+// (ملاحظة: شهر نوفمبر هو 10 في الـ JavaScript لأن الشهور بتبدأ من 0، فكتابة 2026-11-30 تعني نوفمبر مضبوط)
+const weddingDate = new Date("2026-11-30T19:00:00").getTime();
 
 const timer = setInterval(function() {
     const now = new Date().getTime();

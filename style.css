@@ -405,3 +405,66 @@ body.lock-scroll {
     margin: 0px auto 0 auto; /* مسافة بينها وبين الصفحة اللي فوقها */
     text-align: center;
 }
+
+.location-box-container {
+    position: absolute;
+    top: 42%;
+    right: 7.5%;
+    width: 40%;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.location-details {
+    margin-bottom: 18px;
+    color: #3b2f2f;
+    font-family: 'Amiri', 'Times New Roman', serif;
+}
+
+.hall-title {
+    margin: 0 0 2px 0;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.hall-name {
+    margin: 0 0 10px 0;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.hall-address {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.map-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 90%;
+    padding: 9px 12px;
+    background: #f4ebd0;
+    border: 1px solid #d4c4a8;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #3b2f2f;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Amiri', 'Times New Roman', serif;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+    transition: 0.3s;
+}
+
+.map-btn:hover {
+    background: #eae0c2;
+}
+body.lock-scroll {
+    overflow: hidden; /* بيقفل السكرول في الأول */
+}
