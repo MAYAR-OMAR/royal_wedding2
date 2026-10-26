@@ -7,27 +7,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainScrollPage = document.getElementById("main-scroll-page");
     const mainVideo = document.getElementById("main-video");
 
-    // عنصر الأغنية
+    // عنصر الأغنية الأساسية
     const bgMusic = document.getElementById("bg-music");
 
     // أول ما تفتحي الصفحة، نقفل السكرول لحد ما تدوسي على الظرف
     document.body.classList.add("lock-scroll");
 
-    // لما ندوس على البوستر، يختفي وفيديو الظرف يشتغل والأغنية تشتغل
+    // لما ندوس على البوستر، يختفي وفيديو الظرف يشتغل (صامت) والأغنية تشتغل وتبفضل شغالة علطول
     envelopeBox.addEventListener("click", () => {
         envelopePoster.style.opacity = "0";
         setTimeout(() => {
             envelopePoster.style.display = "none";
         }, 400);
 
-        // تشغيل فيديو الظرف
+        // تشغيل فيديو الظرف (صامت عشان ما يقفلش الأغنية على الموبايل)
         if (envelopeVideo) {
             envelopeVideo.play().catch(error => {
                 console.log("Error playing envelope video:", error);
             });
         }
 
-        // تشغيل الأغنية والتأكد من عملها
+        // تشغيل الأغنية الأساسية وتثبيتها
         if (bgMusic) {
             bgMusic.play().catch(error => {
                 console.log("Error playing audio:", error);
@@ -40,7 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
         envelopeVideo.addEventListener("ended", () => {
             envelopeScreen.classList.add("hidden");
             mainScrollPage.classList.remove("hidden");
-            document.body.classList.remove("lock-scroll"); // فتح السكرول هنا تماماً
+            
+            // فتح السكرول تماماً وإلغاء أي قفل
+            document.body.classList.remove("lock-scroll");
+            document.body.style.overflow = "auto"; 
             
             // تشغيل الفيديو الرئيسي
             if (mainVideo) {
@@ -49,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             }
 
-            // الأوتو سكرول (Autoscroll)
+            // الأوتو سكرول (Autoscroll) للنزول تلقائياً للعداد واللوكيشن
             setTimeout(() => {
                 mainScrollPage.scrollIntoView({ 
                     behavior: 'smooth' 
@@ -60,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // تاريخ الفرح (30 نوفمبر 2026 الساعة 7 مساءً)
-// (ملاحظة: شهر نوفمبر هو 10 في الـ JavaScript لأن الشهور بتبدأ من 0، فكتابة 2026-11-30 تعني نوفمبر مضبوط)
 const weddingDate = new Date("2026-11-30T19:00:00").getTime();
 
 const timer = setInterval(function() {
@@ -85,5 +87,5 @@ const timer = setInterval(function() {
     document.getElementById("days").innerText = String(days).padStart(2, '0');
     document.getElementById("hours").innerText = String(hours).padStart(2, '0');
     document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-    document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+    document.getElementById("seconds").innerTextString = String(seconds).padStart(2, '0');
 }, 1000);
